@@ -24,6 +24,13 @@ class UserController extends Controller
         // $id = Auth::user();
     }
 
+    function test()
+    {
+
+        $id = Auth::id();
+        echo $id;
+    }
+
     function getFemales()
     {
         $users = User::where('gender', 'female')->get();

@@ -23,13 +23,11 @@ Route::group(["prefix" => "dating"], function () {
     //login
     Route::post('login', [AuthController::class, 'login'])->name("login");
 
-    Route::get('getMales', [UserController::class, 'getMales']);
-    Route::get('getFemales', [UserController::class, 'getFemales']);
-
     //JWT auth  
-    Route::group(["middleware" => "security"], function () {
+    Route::group(["middleware" => "api"], function () {
         Route::get('getMales', [UserController::class, 'getMales']);
         Route::get('getFemales', [UserController::class, 'getFemales']);
+        Route::get('test', [UserController::class, 'test']);
     });
 });
 
