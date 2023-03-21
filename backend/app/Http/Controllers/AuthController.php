@@ -49,7 +49,7 @@ class AuthController extends Controller
     {
         $user = new User;
 
-        if ($request->email && $request->password && $request->name && $request->profile_img) {
+        if ($request->email && $request->password && $request->name) {
             $user->name = $request->name;
             $user->email = $request->email;
             $user->password = Hash::make($request->password);
@@ -62,7 +62,7 @@ class AuthController extends Controller
             $user->gender = $request->gender;
             $user->bio = $request->bio;
 
-            $user->profile_img = $request->profile_img;
+            $user->profile_img = $request->profile_img ? $request->profile_img : "NA";
 
             $image_data = base64_decode(preg_replace('#^data:image/\w+;base64,#i', '', $user->profile_img));
 
@@ -73,7 +73,7 @@ class AuthController extends Controller
 
             if ($user->save()) {
                 return response()->json([
-                    "status" => 1,
+                    "status" => 'success',
                     "data" => $user
                 ]);
             }
