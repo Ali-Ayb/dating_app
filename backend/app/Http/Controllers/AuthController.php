@@ -51,6 +51,12 @@ class AuthController extends Controller
             $user->email = $request->email;
             $user->password = Hash::make($request->password);
             $user->profile_img = $request->profile_img;
+            $user->location = $request->location;
+            $user->birth_date = $request->birth_date;
+            $user->optional_img1 = $request->optional_img1;
+            $user->optional_img2 = $request->optional_img2;
+            $user->optional_img3 = $request->optional_img3;
+            $user->gender = $request->gender;
 
             if ($user->save()) {
                 return response()->json([
