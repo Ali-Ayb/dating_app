@@ -4,17 +4,37 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\User;
+
 
 class UserController extends Controller
 {
-    // function __construct()
-    // {
-    //     $this->middleware('auth:api', ['except' => ['login', 'register']]);
-    // }
-    function test()
+    function getMales()
     {
-        $id = Auth::id();
-        echo $id;
+        $users = User::where('gender', 'male')->get();
+
+        return response()->json([
+            'success' => true,
+            'data' => $users
+        ]);
+
+        // $id = Auth::id();
+        // echo $id;
+
+        // $id = Auth::user();
+    }
+
+    function getFemales()
+    {
+        $users = User::where('gender', 'female')->get();
+
+        return response()->json([
+            'success' => true,
+            'data' => $users
+        ]);
+
+        // $id = Auth::id();
+        // echo $id;
 
         // $id = Auth::user();
     }
