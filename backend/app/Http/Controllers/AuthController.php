@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
+
 use App\Models\User;
 
 class AuthController extends Controller
@@ -32,6 +34,7 @@ class AuthController extends Controller
         }
 
         $user = Auth::user();
+
         return response()->json([
             'status' => 'success',
             'user' => $user,
@@ -50,13 +53,22 @@ class AuthController extends Controller
             $user->name = $request->name;
             $user->email = $request->email;
             $user->password = Hash::make($request->password);
-            $user->profile_img = $request->profile_img;
+
             $user->location = $request->location;
             $user->birth_date = $request->birth_date;
             $user->optional_img1 = $request->optional_img1;
             $user->optional_img2 = $request->optional_img2;
             $user->optional_img3 = $request->optional_img3;
             $user->gender = $request->gender;
+
+            $user->profile_img = $request->profile_img;
+
+            $image_data = base64_decode(preg_replace('#^data:image/\w+;base64,#i', '', $user->profile_img));
+
+            $filename = uniqid() . '.jpg';
+
+            Storage::disk('public')->put('images/' . $filename, $image_data);
+
 
             if ($user->save()) {
                 return response()->json([
