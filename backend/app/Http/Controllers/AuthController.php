@@ -60,6 +60,7 @@ class AuthController extends Controller
             $user->optional_img2 = $request->optional_img2;
             $user->optional_img3 = $request->optional_img3;
             $user->gender = $request->gender;
+            $user->bio = $request->bio;
 
             $user->profile_img = $request->profile_img;
 
