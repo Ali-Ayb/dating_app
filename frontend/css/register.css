@@ -77,6 +77,11 @@ a {
   margin-right: 10px;
 }
 
+.img {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
 .name-container {
   display: flex;
 }
