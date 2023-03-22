@@ -1,0 +1,40 @@
+body {
+  background-color: #867070;
+  font-family: "Poppins", sans-serif;
+  color: #f5ebeb;
+  margin: 0;
+  padding: 0;
+}
+
+.nav_bar {
+  background-color: #a4907c;
+  height: 13vh;
+  width: 100vw;
+  display: flex;
+}
+
+.nav_home {
+  display: inline-block;
+  align-self: flex-end;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.nav_edit {
+  display: inline-block;
+  align-self: flex-end;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.nav_message {
+  display: inline-block;
+  align-self: flex-end;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+a {
+  color: #f1dec9;
+  text-decoration: none;
+}

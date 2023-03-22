@@ -13,11 +13,9 @@ window.onload = () => {
     axios
       .post("http://127.0.0.1:8000/api/dating/login", data)
       .then((result) => {
-        console.log(result.data.authorisation.token);
         if (result.data.authorisation.token) {
-          console.log(result.data.authorisation.token);
           localStorage.setItem("token", result.data.authorisation.token);
-          alert("logedin");
+          window.location.href = "../index.html";
         }
       })
       .catch((err) => {
