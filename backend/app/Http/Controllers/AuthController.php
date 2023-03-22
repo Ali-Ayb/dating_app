@@ -67,7 +67,7 @@ class AuthController extends Controller
             $image_data = base64_decode(preg_replace('#^data:image/\w+;base64,#i', '', $user->profile_img));
 
             $filename = uniqid() . '.jpg';
-
+            $user->profile_img = $filename;
             Storage::disk('public')->put('images/' . $filename, $image_data);
 
 
